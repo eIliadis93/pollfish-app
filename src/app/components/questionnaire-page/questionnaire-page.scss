@@ -1,0 +1,40 @@
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-1);
+}
+
+.page-header {
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.page-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.page-content {
+  flex: 1;
+}
+
+.page-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.page--mobile {
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+}
+
+.page--desktop {
+  padding: 1.75rem;
+}

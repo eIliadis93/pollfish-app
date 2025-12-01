@@ -1,0 +1,28 @@
+<section
+  class="page"
+  [ngClass]="{
+    'page--mobile': viewport.state().isMobile,
+    'page--desktop': viewport.state().isDesktop
+  }"
+>
+  <header class="page-header">
+    <h1 class="page-title">Questionnaire</h1>
+  </header>
+
+  <div class="page-content">
+    <table>
+      <tbody>
+        <!-- <tr *ngFor="let q of store.questions(); trackBy: trackById">
+          <td>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="page-actions">
+    <button class="btn btn-outline" (click)="addQuestion()">Add question</button>
+
+    <button class="btn btn-primary" (click)="store.saveNow()">Save now</button>
+  </footer>
+</section>
