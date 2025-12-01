@@ -21,6 +21,7 @@ export class PollfishApiService {
     let url = `${this.baseUrl}${path}`;
 
     if (environment.production) {
+      //setting the env only in production for testing purposes
       const sep = url.includes('?') ? '&' : '?';
       url = `${url}${sep}env=production`;
     }
