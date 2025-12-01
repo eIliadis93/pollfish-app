@@ -1,1 +1,264 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Zona Pro';
+  src: url('/assets/fonts/zona-pro/ZonaPro-Regular.woff2') format('woff2'),
+    url('/assets/fonts/zona-pro/ZonaPro-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zona Pro';
+  src: url('/assets/fonts/zona-pro/ZonaPro-Bold.woff2') format('woff2'),
+    url('/assets/fonts/zona-pro/ZonaPro-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem 1.5rem;
+}
+
+:root {
+  --color-primary: #1976d2;
+  --color-primary-dark: #115293;
+  --color-primary-light: #e3f2fd;
+
+  --color-surface: #ffffff;
+  --color-background: #f3f4f6;
+  --color-border-subtle: #e5e7eb;
+
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+
+  --color-error: #d32f2f;
+  --color-success: #2e7d32;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --elevation-1: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --elevation-2: 0 4px 10px rgba(15, 23, 42, 0.12);
+
+  --btn-height: 40px;
+  --btn-radius: 6px;
+  --btn-font-size: 0.95rem;
+  --btn-font-weight: 600;
+
+  --btn-shadow-pressed: inset 0 2px 4px rgba(15, 23, 42, 0.3);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Zona Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+img,
+svg,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+small {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+button {
+  font-family: inherit;
+  font-size: var(--btn-font-size);
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: var(--btn-height);
+  padding: 0 1.2rem;
+
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+
+  border: none;
+  outline: none;
+
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.1s ease,
+    transform 0.08s ease;
+
+  user-select: none;
+}
+
+.btn:active {
+  box-shadow: var(--btn-shadow-pressed);
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: var(--elevation-1);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--elevation-2);
+}
+
+.btn-outline {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.btn-outline:hover {
+  background-color: #f9fafb;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+.btn-icon {
+  width: var(--btn-height);
+  height: var(--btn-height);
+  padding: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn[disabled] {
+  box-shadow: none;
+  transform: none;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.field-control {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary-light);
+}
+
+.field-helper {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.field-error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--elevation-1);
+  padding: 1rem;
+}
+
+.page {
+  max-width: 960px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
