@@ -24,9 +24,11 @@ export class QuestionDialogService {
     this.dialogRef = ref;
     ref.instance.question = question;
 
-    ref.instance.autosave.subscribe((q) => {
-      this.persist(q);
-    });
+    if (question) {
+      ref.instance.autosave.subscribe((q) => {
+        this.persist(q);
+      });
+    }
 
     ref.instance.save.subscribe((q) => {
       this.persist(q);
@@ -85,7 +87,7 @@ export class QuestionDialogService {
     this.lastSnapshot = snapshot;
 
     if (q.id) {
-      this.store.updateQuestionById(q.id, q);
+      this.store.updateQuestionViaPut(q);
     } else {
       this.store.addQuestion(q);
     }

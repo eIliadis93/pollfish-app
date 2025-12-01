@@ -15,13 +15,18 @@
     } @else if (store.questions().length === 0) {
     <p>No questions yet.</p>
     } @else { @for (q of store.questions(); track q.id) {
-    <div class="card" (click)="editQuestion(q)">
-      {{ q.prompt }}
-    </div>
+    <app-question-item [question]="q"></app-question-item>
     } }
   </div>
 
   <footer class="page-actions">
-    <button class="btn btn-primary" (click)="addQuestion()">Add question</button>
+    <div class="page-warning">
+      @if(store.hasReachedLimit()) {
+      <span>Question limit (10)</span>
+      }
+    </div>
+    <button class="btn btn-primary" [disabled]="store.hasReachedLimit()" (click)="addQuestion()">
+      Create question
+    </button>
   </footer>
 </section>

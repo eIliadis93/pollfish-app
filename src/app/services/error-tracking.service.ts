@@ -1,9 +1,12 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AppError, ErrorKind } from '../models/app-error.model';
+import { ToastService } from './toast.service';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorTrackingService {
+  private readonly toast = inject(ToastService);
+
   private readonly _lastError = signal<AppError | null>(null);
   readonly lastError = this._lastError;
 
@@ -15,6 +18,8 @@ export class ErrorTrackingService {
       `[ErrorTracking] ${appError.operation} (${appError.kind})`,
       appError.technicalMessage ?? appError.message
     );
+
+    this.toast.fromAppError(appError);
 
     return appError;
   }

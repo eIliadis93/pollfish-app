@@ -1,0 +1,45 @@
+<article class="question-panel" [class.question-panel--expanded]="expanded()">
+  <header class="question-panel__header" (click)="toggleExpanded()">
+    <div class="question-panel__title-block">
+      <h2 class="question-panel__title">
+        {{ question.prompt || 'Untitled question' }}
+      </h2>
+      <p class="question-panel__meta">
+        {{ answersCountLabel() }}
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="question-panel__chevron"
+      [attr.aria-expanded]="expanded()"
+      (click)="toggleExpanded(); $event.stopPropagation()"
+    >
+      <span class="question-panel__chevron-icon">
+        {{ expanded() ? '˄' : '˅' }}
+      </span>
+    </button>
+  </header>
+
+  @if (expanded()) {
+  <section class="question-panel__body">
+    @if (!question.answers || question.answers.length === 0) {
+    <p class="question-panel__empty">No answers yet.</p>
+    } @else {
+    <ul class="question-panel__answers">
+      @for (answer of question.answers; track $index) {
+      <li class="question-panel__answer">
+        {{ answer }}
+      </li>
+      }
+    </ul>
+    }
+
+    <div class="question-panel__actions">
+      <button type="button" class="btn btn-primary" (click)="editQuestion()">Edit</button>
+
+      <button type="button" class="btn btn-outline" (click)="deleteQuestion()">Delete</button>
+    </div>
+  </section>
+  }
+</article>

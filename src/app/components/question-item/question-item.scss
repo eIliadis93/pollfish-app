@@ -1,0 +1,101 @@
+.question-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--elevation-1);
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.question-panel--expanded {
+  border-color: var(--color-primary);
+  box-shadow: var(--elevation-2);
+}
+
+.question-panel__header {
+  background-color: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+}
+
+.question-panel__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.question-panel__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.question-panel__meta {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.question-panel__chevron {
+  border: none;
+  background: transparent;
+  padding: 0.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-panel__chevron-icon {
+  font-size: 0.9rem;
+}
+
+.question-panel__body {
+  border-top: 1px solid var(--color-border-subtle);
+  padding: 0.75rem 1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.question-panel__answers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.question-panel__answer {
+  font-size: 0.9rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background-color: #f3f4f6;
+}
+
+.question-panel__empty {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.question-panel__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border-subtle);
+  margin-top: 0.25rem;
+}
+
+.question-panel__actions .btn {
+  height: 32px;
+  font-size: 0.8rem;
+  padding-inline: 0.75rem;
+}

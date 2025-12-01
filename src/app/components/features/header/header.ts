@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { QuestionnaireStore } from '../../../core/store/questionnaire.store';
 import { Question } from '../../../models/question.model';
+import { QuestionDialogService } from '../../../services/question-dialog.service';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +11,13 @@ import { Question } from '../../../models/question.model';
 })
 export class Header {
   readonly store = inject(QuestionnaireStore);
+  readonly dialog = inject(QuestionDialogService);
 
   onSaveNow(): void {
     this.store.saveNow();
   }
 
   onAddQuestion(): void {
-    const newQuestion: Question = {
-      prompt: '',
-      answers: [''],
-    };
-
-    this.store.addQuestion(newQuestion);
+    this.dialog.open(null);
   }
 }
