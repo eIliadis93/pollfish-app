@@ -1,0 +1,66 @@
+<div class="dialog-backdrop" (click)="onBackdropClick()"></div>
+
+<div class="dialog" [class.dialog--mobile]="isMobile()" (click)="$event.stopPropagation()">
+  <header class="dialog__header">
+    <h2 class="dialog__title">{{ dialogTitle() }}</h2>
+
+    <button class="btn btn-icon dialog__close" (click)="onCancel()">✕</button>
+  </header>
+
+  <div class="dialog__body">
+    <form [formGroup]="form" (ngSubmit)="onSave()" class="dialog__form">
+      <div class="field">
+        <label class="field-label" for="prompt">Question</label>
+        <input
+          id="prompt"
+          class="field-control"
+          type="text"
+          formControlName="prompt"
+          placeholder="Type your question here"
+        />
+
+        @if (form.controls.prompt.touched && form.controls.prompt.value.trim().length === 0) {
+        <p class="field-error">Question title is required.</p>
+        }
+      </div>
+
+      <div class="answers">
+        <div class="answers__header">
+          <span>Answers</span>
+        </div>
+
+        <ul class="answers__list">
+          @for (ctrl of answersArray.controls; track $index) {
+          <li class="answers__item">
+            <input
+              class="field-control answers__input"
+              type="text"
+              [formControl]="ctrl"
+              [placeholder]="'Answer ' + ($index + 1)"
+              (keydown.enter)="onAnswerEnter($event, $index)"
+              (blur)="onAnswerBlur($index)"
+            />
+            <button
+              type="button"
+              class="btn btn-icon answers__remove"
+              (click)="removeAnswer($index)"
+            >
+              ✕
+            </button>
+          </li>
+          }
+        </ul>
+
+        @if (cleanedAnswers().length < 2 && form.touched) {
+        <p class="field-error">Please provide at least two non-empty answers.</p>
+        }
+      </div>
+    </form>
+  </div>
+
+  <footer class="dialog__footer">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+    <button type="button" class="btn btn-primary" (click)="onSave()">Save question</button>
+  </footer>
+</div>

@@ -10,19 +10,18 @@
   </header>
 
   <div class="page-content">
-    <table>
-      <tbody>
-        <!-- <tr *ngFor="let q of store.questions(); trackBy: trackById">
-          <td>
-          </td>
-        </tr> -->
-      </tbody>
-    </table>
+    @if (store.isLoading()) {
+    <p>Loading questionnaire…</p>
+    } @else if (store.questions().length === 0) {
+    <p>No questions yet.</p>
+    } @else { @for (q of store.questions(); track q.id) {
+    <div class="card" (click)="editQuestion(q)">
+      {{ q.prompt }}
+    </div>
+    } }
   </div>
 
   <footer class="page-actions">
-    <button class="btn btn-outline" (click)="addQuestion()">Add question</button>
-
-    <button class="btn btn-primary" (click)="store.saveNow()">Save now</button>
+    <button class="btn btn-primary" (click)="addQuestion()">Add question</button>
   </footer>
 </section>

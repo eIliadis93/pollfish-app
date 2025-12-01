@@ -1,10 +1,14 @@
 import { Component, inject } from '@angular/core';
+import { NgClass } from '@angular/common';
+
 import { QuestionnaireStore } from '../../core/store/questionnaire.store';
 import { ViewportService } from '../../services/viewport.service';
-import { NgClass } from '@angular/common';
+import { Question } from '../../models/question.model';
+import { QuestionDialogService } from '../../services/question-dialog.service';
 
 @Component({
   selector: 'app-questionnaire-page',
+  standalone: true,
   imports: [NgClass],
   templateUrl: './questionnaire-page.html',
   styleUrl: './questionnaire-page.scss',
@@ -12,10 +16,21 @@ import { NgClass } from '@angular/common';
 export class QuestionnairePage {
   readonly store = inject(QuestionnaireStore);
   readonly viewport = inject(ViewportService);
+  private readonly questionDialog = inject(QuestionDialogService);
 
   ngOnInit() {
     this.store.loadQuestionnaire();
   }
 
-  addQuestion() {}
+  openQuestionDialog(question: Question | null = null) {
+    this.questionDialog.open(question);
+  }
+
+  addQuestion() {
+    this.openQuestionDialog(null);
+  }
+
+  editQuestion(q: Question) {
+    this.openQuestionDialog(q);
+  }
 }
