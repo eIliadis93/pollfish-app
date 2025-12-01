@@ -1,0 +1,60 @@
+.app-header {
+  width: 100%;
+  background: var(--color-primary);
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.75rem 1.5rem;
+
+  box-shadow: var(--elevation-1);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff; // override for clarity
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Buttons inside header */
+.header-actions .btn {
+  height: var(--btn-height);
+  border-radius: var(--btn-radius);
+}
+
+/* Outline button on blue background */
+.header-actions .btn-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.header-actions .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+/* Primary button stays the same */
+.header-actions .btn-primary {
+  background: #ffffff;
+  color: var(--color-primary);
+}
+
+.header-actions .btn-primary:hover {
+  background: #f0f0f0;
+}
