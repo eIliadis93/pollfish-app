@@ -1,59 +1,120 @@
-# PollfishApp
+# Pollfish-App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+A dynamic questionnaire management app built with **Angular standalone components** and **Angular CDK** for drag-and-drop functionality.
+This project allows users to create, edit, reorder, and delete questions and their answers with real-time autosave.
 
-## Development server
+---
 
-To start a local development server, run:
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the App](#running-the-app)
+- [Development Notes](#development-notes)
+- [Project Highlights](#project-highlights)
+- [Future Improvements](#future-improvements)
+- [License](#license)
+
+---
+
+## Features
+
+- Create, edit, and delete questions
+- Add multiple answers per question
+- Drag & drop to reorder questions and answers
+- Autosave on every change (with debouncing)
+- Validation to ensure each question has at least 2 non-empty answers
+- Mobile-friendly responsive design
+- Smooth animations for dialogs and panels
+
+---
+
+## Prerequisites
+
+Make sure you have installed:
+
+- [Node.js](https://nodejs.org/) >= 18
+- [npm](https://www.npmjs.com/) >= 9
+- Angular CLI (optional, for running Angular commands locally)
+
+```bash
+npm install -g @angular/cli
+```
+
+---
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/eIliadis93/pollfish-app.git
+cd pollfish-app
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## Running the App
+
+Start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and go to: `http://localhost:4200`
 
-## Code scaffolding
+The app supports **hot-reloading**, so changes are applied instantly.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Development Notes
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Standalone Components:** All components are standalone to simplify module management.
+- **Signals & Reactive Forms:** The app uses Angular **signals** for state management and reactive forms for handling inputs.
+- **Drag & Drop:** Angular CDK is used for reordering both questions and answers.
+- **Autosave:** Changes to questions and answers are autosaved with a debounce of 400ms.
+- **Validation:** Each question requires at least 2 answers; empty answers are not allowed.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## Project Highlights
 
-To build the project run:
+- **Clean Architecture:**
+  Separation of concerns with `QuestionnaireStore` for state and `PollfishApiService` for backend interactions.
 
-```bash
-ng build
-```
+- **Reactivity with Signals:**
+  Uses Angular signals to manage the state of questions, expanded panels, and saving indicators.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **User Experience:**
 
-## Running unit tests
+  - Answers auto-focus on new inputs
+  - Drag handles for answers and questions
+  - Smooth mobile-friendly dialogs and panel animations
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- **Autosave Queue Handling:**
+  Multiple changes in quick succession are queued and saved sequentially.
 
-```bash
-ng test
-```
+- **Toaster:**
+  A universal toaster to notify the user for messages, errors, etc.
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Future Improvements
 
-```bash
-ng e2e
-```
+- Add unit tests for store and components
+- Keyboard accessibility for drag & drop
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Backend
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more informations on the mock-api please follow the link:
+https://github.com/pollfish/hiring-process/tree/master/mock-api
