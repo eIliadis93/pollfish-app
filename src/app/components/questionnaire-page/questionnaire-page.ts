@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { DragDropModule, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { QuestionnaireStore } from '../../core/store/questionnaire.store';
 import { ViewportService } from '../../services/viewport.service';
@@ -10,7 +11,7 @@ import { QuestionItem } from '../question-item/question-item';
 @Component({
   selector: 'app-questionnaire-page',
   standalone: true,
-  imports: [NgClass, QuestionItem],
+  imports: [NgClass, QuestionItem, DragDropModule],
   templateUrl: './questionnaire-page.html',
   styleUrl: './questionnaire-page.scss',
 })
@@ -34,5 +35,13 @@ export class QuestionnairePage {
 
   editQuestion(q: Question) {
     this.openQuestionDialog(q);
+  }
+
+  onQuestionsDrop(event: CdkDragDrop<Question[]>): void {
+    const questions = [...this.store.questions()]; // clone current array
+
+    moveItemInArray(questions, event.previousIndex, event.currentIndex);
+
+    this.store.updateQuestionsOrder(questions);
   }
 }

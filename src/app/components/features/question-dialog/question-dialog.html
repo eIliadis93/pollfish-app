@@ -24,37 +24,7 @@
         }
       </div>
 
-      <div class="answers">
-        <div class="answers__header">
-          <span>Answers</span>
-        </div>
-
-        <ul class="answers__list">
-          @for (ctrl of answersArray.controls; track $index) {
-          <li class="answers__item">
-            <input
-              class="field-control answers__input"
-              type="text"
-              [formControl]="ctrl"
-              [placeholder]="'Answer ' + ($index + 1)"
-              (keydown.enter)="onAnswerEnter($event, $index)"
-              (blur)="onAnswerBlur($index)"
-            />
-            <button
-              type="button"
-              class="btn btn-icon answers__remove"
-              (click)="removeAnswer($index)"
-            >
-              ✕
-            </button>
-          </li>
-          }
-        </ul>
-
-        @if (cleanedAnswers().length < 2 && form.touched) {
-        <p class="field-error">Please provide at least two non-empty answers.</p>
-        }
-      </div>
+      <app-answer-item [answersArray]="answersArray"></app-answer-item>
     </form>
   </div>
 

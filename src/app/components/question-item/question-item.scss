@@ -99,3 +99,12 @@
   font-size: 0.8rem;
   padding-inline: 0.75rem;
 }
+
+.drag-handle {
+  cursor: grab;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}

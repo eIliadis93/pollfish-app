@@ -9,13 +9,20 @@
     <h1 class="page-title">Questionnaire</h1>
   </header>
 
-  <div class="page-content">
+  <div
+    class="page-content"
+    cdkDropList
+    [cdkDropListData]="store.questions()"
+    (cdkDropListDropped)="onQuestionsDrop($event)"
+  >
     @if (store.isLoading()) {
     <p>Loading questionnaire…</p>
     } @else if (store.questions().length === 0) {
     <p>No questions yet.</p>
     } @else { @for (q of store.questions(); track q.id) {
-    <app-question-item [question]="q"></app-question-item>
+    <div cdkDrag class="question-drag-wrapper">
+      <app-question-item [question]="q"></app-question-item>
+    </div>
     } }
   </div>
 

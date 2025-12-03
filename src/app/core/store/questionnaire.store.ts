@@ -140,4 +140,18 @@ export class QuestionnaireStore {
       },
     });
   }
+
+  updateQuestionsOrder(newOrder: Question[]) {
+    const currentOrder = this.questions();
+
+    // Compare by IDs to see if the order really changed
+    const isDifferent =
+      currentOrder.length !== newOrder.length ||
+      currentOrder.some((q, i) => q.id !== newOrder[i].id);
+
+    if (!isDifferent) return;
+
+    this.questions.set(newOrder);
+    this.saveNow();
+  }
 }

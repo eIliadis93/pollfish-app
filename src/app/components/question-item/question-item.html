@@ -1,5 +1,6 @@
 <article class="question-panel" [class.question-panel--expanded]="expanded()">
   <header class="question-panel__header" (click)="toggleExpanded()">
+    <span class="drag-handle" cdkDragHandle>⋮⋮</span>
     <div class="question-panel__title-block">
       <h2 class="question-panel__title">
         {{ question.prompt || 'Untitled question' }}

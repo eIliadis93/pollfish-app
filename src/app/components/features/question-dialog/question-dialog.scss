@@ -120,42 +120,6 @@
   color: #b91c1c;
 }
 
-.answers {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.answers__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.answers__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.answers__item {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.answers__input {
-  flex: 1;
-}
-
-.answers__remove {
-  min-width: 32px;
-  height: 32px;
-}
-
 @keyframes dialog-fade-in {
   from {
     opacity: 0;

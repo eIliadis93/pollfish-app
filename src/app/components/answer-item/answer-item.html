@@ -1,0 +1,31 @@
+<div class="answers">
+  <div class="answers__header">
+    <span>Answers</span>
+    <button type="button" class="btn btn-secondary answers__add" (click)="addAnswer()">
+      + Add answer
+    </button>
+  </div>
+
+  <ul
+    class="answers__list"
+    cdkDropList
+    [cdkDropListData]="answersArray.controls"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    <li class="answers__item" *ngFor="let ctrl of answersArray.controls; let i = index" cdkDrag>
+      <span class="drag-handle" cdkDragHandle aria-hidden="true">⋮⋮</span>
+
+      <input
+        class="field-control answers__input"
+        type="text"
+        [formControl]="ctrl"
+        [placeholder]="'Answer ' + (i + 1)"
+        (keydown.enter)="onAnswerEnter(i, $event)"
+      />
+
+      <button type="button" class="btn btn-icon answers__remove" (click)="removeAnswer(i)">
+        ✕
+      </button>
+    </li>
+  </ul>
+</div>
