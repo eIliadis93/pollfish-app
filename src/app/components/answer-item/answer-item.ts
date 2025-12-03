@@ -1,6 +1,6 @@
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, QueryList, ViewChildren } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -41,9 +41,13 @@ export class AnswerItem {
     event.preventDefault();
     this.addAnswerOnIndex(index);
 
+    this.focusLastAnswer();
+  }
+
+  private focusLastAnswer() {
     //this is to focus the newly added input (a secondary enter press needed to move to it), just UX improvement
     const inputs = document.querySelectorAll<HTMLInputElement>('.answers__list input');
-    const newInput = inputs[inputs.length - 1]; // last input
+    const newInput = inputs[inputs.length - 1];
     newInput?.focus();
   }
 
